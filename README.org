@@ -37,34 +37,34 @@
      + [[*emacs][emacs]]
   8. [[*Todos][Todos]]
 * Installation
-  #+begin_src shell-script
+    #+begin_src shell-script
 git clone https://github.com/sebastiencs/icons-in-terminal.git
-  #+end_src
+    #+end_src
 
-  To install =icons-in-terminal=, run:
+To install =icons-in-terminal=, run:
 
   #+begin_src shell-script
 ./install.sh  
 # Follow the instructions to edit ~/.config/fontconfig/conf.d/30-icons.conf
   #+end_src
 
-  Or if your terminal is
-  [[https://github.com/sebastiencs/icons-in-terminal/issues/1][supported]]
-  (Experimental)
+Or if your terminal is
+[[https://github.com/sebastiencs/icons-in-terminal/issues/1][supported]]
+(Experimental)
 
   #+begin_src shell-script
 ./install-autodetect.sh 
   #+end_src
 
-  Done ! You can start a new terminal and run =print_icons.sh= to see the
-  installed gryphs.
+Done ! You can start a new terminal and run =print_icons.sh= to see the
+installed gryphs.
 
   
-  You can see names of each icon by giving any parameter to
-  =print_icons.sh=:
+You can see names of each icon by giving any parameter to
+=print_icons.sh=:
 
-  ed9w2in6 [2023-10-31 Tue]: the bash script relies on a unicode escaping feature
-  that is only available to bash version >= 4.2.  Check yours with =bash --version=.
+ed9w2in6 [2023-10-31 Tue]: the bash script relies on a unicode escaping feature
+that is only available to bash version >= 4.2.  Check yours with =bash --version=.
   
   #+begin_src shell-script
 # /print_icons.py or ./print_icons.zsh may work better.
@@ -73,15 +73,15 @@ git clone https://github.com/sebastiencs/icons-in-terminal.git
 ./print_icons.sh --names | grep ANY_NAME
   #+end_src
 
-  ed9w2in6 [2023-10-31 Tue]: Alternatively, use the *python* (=./print_icons.py=) or *zsh* (=./print_icons.zsh=) script to check your setup.
+ed9w2in6 [2023-10-31 Tue]: Alternatively, use the *python* (=./print_icons.py=) or *zsh* (=./print_icons.zsh=) script to check your setup.
   + The =python= script is written by, [[https://github.com/amoriello][amoriello]], see the original [[https://github.com/sebastiencs/icons-in-terminal/issues/1#issuecomment-320480809][here]].
 
-  To use icons in your terminal, *do not copy-paste icons* from the output
-  of =print_icons.sh= but use their variable name: see
-  [[#integrations][integrations]].\\
-  When one of the provided font will be updated and add new icons, some
-  codepoints in =icons-in-terminal.ttf= will be changed, the variable
-  names won't.
+    To use icons in your terminal, *do not copy-paste icons* from the output
+    of =print_icons.sh= but use their variable name: see
+    [[#integrations][integrations]].\\
+    When one of the provided font will be updated and add new icons, some
+    codepoints in =icons-in-terminal.ttf= will be changed, the variable
+    names won't.
 
 * Building
   If you want to add new font, follow these instructions:
@@ -178,7 +178,7 @@ source ~/.local/share/icons-in-terminal/icons_bash.sh
 
    #+begin_src shell
 echo -e $oct_location # note the '-e'
-   #+end_src
+      #+end_src
 
 ** Emacs integration
    ed9w2in6:
@@ -186,7 +186,7 @@ echo -e $oct_location # note the '-e'
    I recommend https://github.com/seagle0128/icons-in-terminal.el for proper integration.
 
    Original content:
-   #+begin_example
+      #+begin_example
    Add this line to your emacs init file:
 
    ,#+begin_example
@@ -199,7 +199,7 @@ echo -e $oct_location # note the '-e'
   (require 'icons-in-terminal)
   (insert (icons-in-terminal 'oct_flame)) ; C-h f icons-in-terminal[RET] for more info
    ,#+end_example
-   #+end_example
+      #+end_example
 
 * Projects using icons-in-terminal
 ** ls
