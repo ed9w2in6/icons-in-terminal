@@ -1,0 +1,116 @@
+diff --git a/patches/treemacs-all-the-icons.el b/patches/treemacs-all-the-icons.el
+index e3adb09..72a0164 100644
+--- a/patches/treemacs-all-the-icons.el
++++ b/patches/treemacs-all-the-icons.el
+@@ -4,6 +4,8 @@
+ 
+ ;; Author: Eric Dallo <ercdll1337@gmail.com>
+ ;; Package-Requires: ((emacs "26.1") (all-the-icons "4.0.1") (treemacs "0.0"))
++;; Package-Version: 20220911.1427
++;; Package-Commit: 861418d9d11b205930bd4555a40b430b9dde9dd4
+ ;; Version: 0
+ ;; Homepage: https://github.com/Alexander-Miller/treemacs
+ 
+@@ -121,20 +123,20 @@
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "apple" :v-adjust 0 :face 'all-the-icons-lsilver) treemacs-all-the-icons-tab) :extensions ("applescript") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "appveyor" :v-adjust 0 :face 'all-the-icons-lblue) treemacs-all-the-icons-tab) :extensions ("appveyor.yml") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "arduino" :v-adjust 0 :face 'all-the-icons-dgreen) treemacs-all-the-icons-tab) :extensions ("ino" "pde") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-material "audiotrack" :v-adjust 0 :face 'all-the-icons-lblue) treemacs-all-the-icons-tab) :extensions ("midi") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "babel" :v-adjust 0 :face 'all-the-icons-yellow) treemacs-all-the-icons-tab) :extensions ("babelignore" "babelrc.js" "babelrc.json" "babel.config.js") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "bazel" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("bazelrc" "bazel") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "bower" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("bower.json") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "bower" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("bower.json") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "bundler" :v-adjust 0 :face 'all-the-icons-lblue) treemacs-all-the-icons-tab) :extensions ("gemfile" "gemfile.lock") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "gear" :v-adjust 0 :face 'all-the-icons-lsilver) treemacs-all-the-icons-tab) :extensions ("bat") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "cplusplus" :v-adjust 0 :face 'all-the-icons-purple) treemacs-all-the-icons-tab) :extensions ("tpp") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "clojure" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("edn") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "cplusplus-line" :v-adjust 0 :face 'all-the-icons-purple) treemacs-all-the-icons-tab) :extensions ("tpp") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "clojure-line" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("edn" "clj" "cljs" "cljc") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "cmake" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("cmake-cache") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "cobol" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("cobol") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "coffeescript" :v-adjust 0 :face 'all-the-icons-dorange) treemacs-all-the-icons-tab) :extensions ("coffeescript") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "coffeescript" :v-adjust 0 :face 'all-the-icons-dorange) treemacs-all-the-icons-tab) :extensions ("coffeescript" "coffee") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-faicon "certificate" :v-adjust 0 :face 'all-the-icons-yellow) treemacs-all-the-icons-tab) :extensions ("csr" "crt" "cer" "der" "pfx" "p7b" "p7r" "src" "crl" "sst" "stl") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "gear" :v-adjust 0 :face 'all-the-icons-lsilver) treemacs-all-the-icons-tab) :extensions ("conf" "properties" "config" "cfg" "xdefaults" "xresources" "terminalrc" "ledgerrc") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "cython" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("cython") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "python" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("py") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "dlang" :v-adjust 0 :face 'all-the-icons-red) treemacs-all-the-icons-tab) :extensions ("d" "dscript" "dml" "diet") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "diff" :v-adjust 0 :face 'all-the-icons-lsilver) treemacs-all-the-icons-tab) :extensions ("diff") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "dockerfile" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("docker-compose.yml") :fallback 'same-as-icon)
+@@ -150,7 +152,11 @@
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "git" :height 0.85 :v-adjust 0 :face 'all-the-icons-red) treemacs-all-the-icons-tab) :extensions ("gitmodules" "gitconfig" "gitignore" "gitattributes") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "graphql" :v-adjust 0 :face 'all-the-icons-pink) treemacs-all-the-icons-tab) :extensions ("graphql") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "jenkins" :v-adjust 0 :face 'all-the-icons-lsilver) treemacs-all-the-icons-tab) :extensions ("jenkins") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "java" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("jar") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "java" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("java" "jar") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "javascript" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("js") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "html5" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("html") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "elisp" :v-adjust 0 :face 'all-the-icons-purple) treemacs-all-the-icons-tab) :extensions ("el") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-faicon "css3" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("css") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-faicon "balance-scale" :v-adjust 0 :face 'all-the-icons-purple) treemacs-all-the-icons-tab) :extensions ("ledger") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "key" :v-adjust 0 :face 'all-the-icons-yellow) treemacs-all-the-icons-tab) :extensions ("license") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-material "translate" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("locale") :fallback 'same-as-icon)
+@@ -158,32 +164,33 @@
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "gnu" :v-adjust 0 :face 'all-the-icons-dsilver) treemacs-all-the-icons-tab) :extensions ("makefile") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "meson" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("meson") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "ocaml" :v-adjust 0 :face 'all-the-icons-lorange) treemacs-all-the-icons-tab) :extensions ("merlin" "ocaml") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-faicon "file-video-o" :v-adjust 0 :face 'all-the-icons-lgreen) treemacs-all-the-icons-tab) :extensions ("avi") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "video" :v-adjust 0 :face 'all-the-icons-lblue) treemacs-all-the-icons-tab) :extensions ("avi" "mp4" "webm" "mov") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-faicon "music" :v-adjust 0 :face 'all-the-icons-lblue) treemacs-all-the-icons-tab) :extensions ("mp3" "midi") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "nginx" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("nginx.conf") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "npm" :v-adjust 0 :face 'all-the-icons-red) treemacs-all-the-icons-tab) :extensions ("npmignore" "npmrc" "package.json" "package-lock.json" "npm-shrinwrap.json") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "delphi" :v-adjust 0 :face 'all-the-icons-red) treemacs-all-the-icons-tab) :extensions ("pascal" "objectpascal") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "patch" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("patch") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "perl" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("perl") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "perl" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("perl") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "phpunit" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("phpunit" "phpunit.xml") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "postgresql" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("pgsql") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "powerpoint" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("pot" "potx" "potm" "ppsx" "ppsm" "pptx" "pptm" "pa" "ppa" "ppam" "sldm" "sldx") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "prolog" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("prolog") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "prolog" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab) :extensions ("prolog") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "purescript" :v-adjust 0 :face 'all-the-icons-lblue) treemacs-all-the-icons-tab) :extensions ("purs") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "racket" :v-adjust 0 :face 'all-the-icons-dred) treemacs-all-the-icons-tab) :extensions ("racket" "rktd" "rktl" "scrbl" "scribble" "plt") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "sqlite" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("sqlite" "db3" "sqlite3") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "sqlite" :v-adjust 0 :face 'all-the-icons-blue) treemacs-all-the-icons-tab) :extensions ("sqlite" "db3" "sqlite3" "db") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "swagger" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("swagger") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-alltheicon "terminal" :v-adjust 0 :face 'all-the-icons-dgreen) treemacs-all-the-icons-tab)
+-                          :extensions ("zshrc" "zshenv" "zprofile" "zlogin" "zlogout" "bash"
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "terminal" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab)
++                          :extensions ("zshrc" "zshenv" "zprofile" "zlogin" "zlogout" "bash" "zsh" "sh"
+                                        "bash_profile" "bash_login" "profile" "bash_aliases")
+                           :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "tsx-alt" :v-adjust 0 :face 'all-the-icons-lgreen) treemacs-all-the-icons-tab) :extensions ("tsx") :fallback 'same-as-icon)
+-    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "excel" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("ods" "fods") :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "excel" :v-adjust 0 :face 'all-the-icons-green) treemacs-all-the-icons-tab) :extensions ("ods" "fods" "xls" "xlsx") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "wasm" :v-adjust 0 :face 'all-the-icons-lpurple) treemacs-all-the-icons-tab) :extensions ("wasm" "wat") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-faicon "font" :v-adjust 0 :face 'all-the-icons-lsilver) treemacs-all-the-icons-tab) :extensions ("ttf" "otf" "eot" "pfa" "pfb" "sfd") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-material "code" :v-adjust 0 :face 'all-the-icons-lpurple) treemacs-all-the-icons-tab) :extensions ("xsl") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "yarn" :v-adjust 0 :face 'all-the-icons-dblue) treemacs-all-the-icons-tab) :extensions ("yarn.lock" "yarnrc" "yarnclean" "yarn-integrity" "yarn-metadata.json" "yarnignore") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "file-media" :v-adjust 0 :face 'all-the-icons-orange) treemacs-all-the-icons-tab)
+-                          :extensions ("tif" "tiff" "bmp" "psd" "ai" "eps" "indd") :fallback 'same-as-icon)
++                          :extensions ("tif" "tiff" "bmp" "psd" "ai" "eps" "indd" "png" "jpg" "jpeg" "webp" "giff") :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "file-code" :v-adjust 0 :face 'treemacs-all-the-icons-file-face) treemacs-all-the-icons-tab)
+                           :extensions ("cask" "ideavimrc" "inputrc"
+                                        "toml" "tridactylrc" "vh" "vimperatorrc"
+@@ -197,7 +204,13 @@
+                                        "tr3" "oxps" "xps")
+                           :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "file-text" :v-adjust 0 :face 'treemacs-all-the-icons-file-face) treemacs-all-the-icons-tab)
+-                          :extensions ("markdown" "rst" "CONTRIBUTE" "LICENSE" "README" "CHANGELOG")
++                          :extensions ("rst" "CONTRIBUTE" "LICENSE" "README" "CHANGELOG")
++                          :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "markdown" :v-adjust 0 :face 'treemacs-all-the-icons-file-face) treemacs-all-the-icons-tab)
++                          :extensions ("md" "markdown")
++                          :fallback 'same-as-icon)
++    (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-fileicon "org" :v-adjust 0 :face 'treemacs-all-the-icons-file-face) treemacs-all-the-icons-tab)
++                          :extensions ("org")
+                           :fallback 'same-as-icon)
+     (treemacs-create-icon :icon (format "  %s%s" (all-the-icons-octicon "file-binary" :v-adjust 0 :face 'treemacs-all-the-icons-file-face) treemacs-all-the-icons-tab)
+                           :extensions ("class" "exe" "obj" "so" "o" "out" "pyc")
+@@ -211,4 +224,4 @@
+ 
+ (provide 'treemacs-all-the-icons)
+ 
+-;;; treemacs-all-the-icons.el ends here
+\ No newline at end of file
++;;; treemacs-all-the-icons.el ends here

@@ -1,0 +1,44 @@
+diff --git a/patches/icons-in-terminal-data.el b/patches/icons-in-terminal-data.el
+index 08f0fc7..0dee90b 100644
+--- a/patches/icons-in-terminal-data.el
++++ b/patches/icons-in-terminal-data.el
+@@ -26,6 +26,12 @@
+ (defconst icons-in-terminal-alist
+   '((fileicon
+      . (;; mfizz
++        ("svelte" . "\xfff8") ;; \ufff8 is replacement char
++        ("dart" . "\xfff8") ;; \ufff8 is replacement char
++        ("assembly" . "\xfff8") ;; \ufff8 is replacement char
++        ("actionscript" . "\xfff8") ;; \ufff8 is replacement char
++        ("fsharp" . "\xfff8") ;; \ufff8 is replacement char
++        ("tsx-alt" . "\xfff8") ;; \ufff8 is replacement char
+         ("git" . "\xedce")
+         ("html5" . "\xede1")
+         ("java" . "\xede4")
+@@ -229,7 +235,7 @@
+         ("flux" . "\xe7cc")
+         ("factor" . "\xe7cd")
+         ("fancy" . "\xe7ce")
+-        ("perl6" . "\xe7cf")
++        ("perl6" . "\xe7cf") ;; latest should be ("raku" . "\xe7cf"), ref: https://github.com/ogdenwebb/emacs-kaolin-themes/issues/55
+         ("gentoo" . "\xe7d0")
+         ("frege" . "\xe7d1")
+         ("fantom" . "\xe7d2")
+@@ -527,7 +533,9 @@
+         ("sigils" . "\xe8f3")
+         ("nginx" . "\xe8f4")))
+     (faicon
+-     . (("glass" . "\xe0e1")
++     . ( ;;
++        ("file-video-o" . "\xfff8") ;; \ufff8 is replacement char
++        ("glass" . "\xe0e1")
+         ("music" . "\xe0e2")
+         ("search" . "\xe0e3")
+         ("envelope-o" . "\xe0e4")
+@@ -2551,4 +2559,4 @@
+     (eval `(defconst ,var (cdr (assoc ',(car it) icons-in-terminal-alist))))))
+ 
+ (provide 'icons-in-terminal-data)
+-;;; icons-in-terminal-data.el ends here
+\ No newline at end of file
++;;; icons-in-terminal-data.el ends here

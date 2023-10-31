@@ -1,0 +1,217 @@
+#+TITLE:icons-in-terminal (fork)
+* READ ME
+  ed9w2in6 at [2023-10-31 Tue]:
+  Please read [[file:HOW_TO_SETUP_2023.org]] for a updated setup instruction.
+  Especially some special steps for macOS and Emacs users.
+  
+  ed9w2in6 at [2023-10-31 Tue]:
+  This project still works but I have stopped using it.
+  I forked this to update a few instructions and test scripts to avoid confusion of any new users on setup.
+  The [[https://github.com/sebastiencs/icons-in-terminal][original repo]] is not very active and confuses some user during setup.  
+  Please report issue [[https://github.com/sebastiencs/icons-in-terminal][upstream]], but not here, thanks.
+
+  If you use Emacs, I recommend using https://github.com/rainstormstudio/nerd-icons.el instead.
+  If you must use this project, I recommend this one:
+  + https://github.com/seagle0128/icons-in-terminal.el
+
+  Please do read the installation instruction, I saw a lot of issue upstream that due to improper setup.
+  I have written a simple setup guide here.
+* Overview
+  - =icons-in-terminal= allows you to get any fonts in your terminal
+    without replacing or patching your font.\\
+  - You can add as many fonts as you want easily, you just need the
+    ttf/odf file and add it to =config.json=.\\
+  - =icons-in-terminal= can also be use with graphical applications.
+* Table of Contents
+  1. [[*Installation][Installation]]
+  2. [[*Building][Building]]
+  3. [[*How it works][How it works]]
+  4. [[*Included icons][Included icons]]
+  5. [[*Screenshots][Screenshots]]
+  6. [[*Integrations][Integrations]]
+     + [[*Fish integration][fish]]
+     + [[*Bash integration][bash]]
+     + [[*Emacs integration][emacs]]
+  7. [[*Projects using icons-in-terminal][Projects using icons-in-terminal]]
+     + [[*ls][ls]]
+     + [[*emacs][emacs]]
+  8. [[*Todos][Todos]]
+* Installation
+  #+begin_src shell-script
+git clone https://github.com/sebastiencs/icons-in-terminal.git
+  #+end_src
+
+  To install =icons-in-terminal=, run:
+
+  #+begin_src shell-script
+./install.sh  
+# Follow the instructions to edit ~/.config/fontconfig/conf.d/30-icons.conf
+  #+end_src
+
+  Or if your terminal is
+  [[https://github.com/sebastiencs/icons-in-terminal/issues/1][supported]]
+  (Experimental)
+
+  #+begin_src shell-script
+./install-autodetect.sh 
+  #+end_src
+
+  Done ! You can start a new terminal and run =print_icons.sh= to see the
+  installed gryphs.
+
+  
+  You can see names of each icon by giving any parameter to
+  =print_icons.sh=:
+
+  ed9w2in6 [2023-10-31 Tue]: the bash script relies on a unicode escaping feature
+  that is only available to bash version >= 4.2.  Check yours with =bash --version=.
+  
+  #+begin_src shell-script
+# /print_icons.py or ./print_icons.zsh may work better.
+./print_icons.sh
+./print_icons.sh --names
+./print_icons.sh --names | grep ANY_NAME
+  #+end_src
+
+  ed9w2in6 [2023-10-31 Tue]: Alternatively, use the *python* (=./print_icons.py=) or *zsh* (=./print_icons.zsh=) script to check your setup.
+  + The =python= script is written by, [[https://github.com/amoriello][amoriello]], see the original [[https://github.com/sebastiencs/icons-in-terminal/issues/1#issuecomment-320480809][here]].
+
+  To use icons in your terminal, *do not copy-paste icons* from the output
+  of =print_icons.sh= but use their variable name: see
+  [[#integrations][integrations]].\\
+  When one of the provided font will be updated and add new icons, some
+  codepoints in =icons-in-terminal.ttf= will be changed, the variable
+  names won't.
+
+* Building
+  If you want to add new font, follow these instructions:
+
+  There are a few dependencies to install:
+
+  - Python 3
+  - [[https://fontforge.github.io][fontforge (with python extension)]]
+
+  You can add the name and path of your font to the file =config.json=.\\
+  Each font can take parameters:\\
+  - =start-from=: exclude all glyphes before the given codepoint. -
+  =until=: exclude all glyphes at the given codepoint and after. -
+  =excludes=: exclude the given codepoints. - =move-vertically=: Use this
+  parameter if your font and its glyphes are not centered vertically. -
+  =short-name=: Prefix to insert before the glyph name when you want to
+  use the icon in your shell or anywhere else - =map-names=: Define a name
+  to the glyph. If not provided, the name will be read from the ttf file
+
+  Once done, you can run:
+
+  #+begin_src shell
+./build.sh
+  #+end_src
+
+* How it works
+  This project is inspired by
+  [[https://github.com/gabrielelana/awesome-terminal-fonts][awesome-terminal-fonts]]
+  but is different.\\
+  I don't modify any existing font, I merge all glyphes from the provided
+  fonts in a new font file and insert them in the
+  [[https://en.wikipedia.org/wiki/Private_Use_Areas][private use
+  areas]].\\
+  The file =~/.config/fontconfig/conf.d/30-icons.conf= tells to freetype
+  to search the glyph in =icons-in-terminal.ttf= if it fails in your
+  default font file. As the codepoints generated are in the private use
+  areas, freetype should always fail and fallback to
+  icons-in-terminal.ttf\\
+  The only requirement is that your default font shouldn't be already
+  patched/modified. But why use a patched font with a limited number of
+  glyphes when they are all included here :)\\
+  Your terminal emulator should also support
+  [[https://en.wikipedia.org/wiki/Fallback_font][fallback font]] (most of
+  them support it)
+
+* Included icons
+  There are already 3618 glyphes included:
+
+  | Name                                                                              | Version                                                                         | Notes                                                                                       |
+  |-----------------------------------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------|
+  | [[https://github.com/ryanoasis/powerline-extra-symbols][powerline-extra-symbols]] | commit 4eae6e8                                                                  |                                                                                             |
+  | [[https://octicons.github.com/][octicons]]                                        | 4.4.0                                                                           |                                                                                             |
+  | [[http://fontawesome.io/][fontawesome]]                                           | 4.7                                                                             |                                                                                             |
+  | [[https://github.com/google/material-design-icons][material-design-icons]]        | 3.0.1                                                                           |                                                                                             |
+  | [[https://atom.io/packages/file-icons][file-icons]]                               | 2.1.4                                                                           |                                                                                             |
+  | [[https://erikflowers.github.io/weather-icons/][weather-icons]]                   | 2.0.10                                                                          |                                                                                             |
+  | [[https://github.com/Lukas-W/font-linux][font-linux]]                             | 0.9                                                                             |                                                                                             |
+  | [[https://github.com/vorillaz/devicons][devicons]]                                | 1.8.0                                                                           |                                                                                             |
+  | [[https://github.com/gabrielelana/pomicons][Pomicons]]                            | commit bb0a579                                                                  |                                                                                             |
+  | [[http://linea.io/][linea]]                                                       | 1.0                                                                             |                                                                                             |
+  | [[https://github.com/fizzed/font-mfizz][font-mfizz]]                              | 2.4.1                                                                           |                                                                                             |
+  | [[https://github.com/tonsky/FiraCode][FiraCode]]                                  | [[https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632][1.200]] | See if your terminal is [[https://github.com/tonsky/FiraCode#terminal-support][compatible]] |
+
+* Screenshots
+  #+caption: ls
+  [[file:image/ls.jpg]]
+  #+caption: bash
+  [[file:image/icons.jpg]]
+  #+caption: fish
+  [[file:image/icons-fish.jpg]]
+* Integrations
+** Fish integration
+   To use =icons-in-terminal= with fish, add this line to
+   =~/.config/fish/config.fish=:
+
+   #+begin_src shell
+source ~/.local/share/icons-in-terminal/icons.fish
+   #+end_src
+
+   Restart a terminal, now you can print any icons with its name:
+
+   #+begin_src shell
+echo $oct_location
+   #+end_src
+
+** Bash integration
+   Add this line to your .bashrc:
+
+   #+begin_src shell
+source ~/.local/share/icons-in-terminal/icons_bash.sh
+   #+end_src
+
+   Restart a terminal, now you can print any icons with its name:
+
+   #+begin_src shell
+echo -e $oct_location # note the '-e'
+   #+end_src
+
+** Emacs integration
+   ed9w2in6:
+   Please refer to 2023_SETUP.org for latest setup instructions.
+   I recommend https://github.com/seagle0128/icons-in-terminal.el for proper integration.
+
+   Original content:
+   #+begin_example
+   Add this line to your emacs init file:
+
+   ,#+begin_example
+  (add-to-list 'load-path "~/.local/share/icons-in-terminal/")
+   ,#+end_example
+
+   To use icons-in-terminal in your package:
+
+   ,#+begin_example
+  (require 'icons-in-terminal)
+  (insert (icons-in-terminal 'oct_flame)) ; C-h f icons-in-terminal[RET] for more info
+   ,#+end_example
+   #+end_example
+
+* Projects using icons-in-terminal
+** ls
+   https://github.com/sebastiencs/ls-icons
+** emacs
+   ed9w2in6 [2023-10-31 Tue]
+   If you use Emacs, I recommend using https://github.com/rainstormstudio/nerd-icons.el instead.
+   If you must use this project, I recommend this one:
+   + https://github.com/seagle0128/icons-in-terminal.el
+
+   Others:
+   + https://github.com/sebastiencs/sidebar.el
+* Todos
+  + Integrate with differents shells
+
