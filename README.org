@@ -37,13 +37,13 @@
      + [[*emacs][emacs]]
   8. [[*Todos][Todos]]
 * Installation
-    #+begin_src shell-script
+    #+begin_src sh
 git clone https://github.com/sebastiencs/icons-in-terminal.git
     #+end_src
 
 To install =icons-in-terminal=, run:
 
-  #+begin_src shell-script
+  #+begin_src sh
 ./install.sh  
 # Follow the instructions to edit ~/.config/fontconfig/conf.d/30-icons.conf
   #+end_src
@@ -52,7 +52,7 @@ Or if your terminal is
 [[https://github.com/sebastiencs/icons-in-terminal/issues/1][supported]]
 (Experimental)
 
-  #+begin_src shell-script
+  #+begin_src sh
 ./install-autodetect.sh 
   #+end_src
 
@@ -65,8 +65,9 @@ You can see names of each icon by giving any parameter to
 
 ed9w2in6 [2023-10-31 Tue]: the bash script relies on a unicode escaping feature
 that is only available to bash version >= 4.2.  Check yours with =bash --version=.
-  
-  #+begin_src shell-script
+ref: https://lists.gnu.org/archive/html/info-gnu/2011-02/msg00012.html#:%7E:text=UXXXXXXXX%20escape%20sequences
+
+  #+begin_src sh
 # /print_icons.py or ./print_icons.zsh may work better.
 ./print_icons.sh
 ./print_icons.sh --names
@@ -103,7 +104,7 @@ ed9w2in6 [2023-10-31 Tue]: Alternatively, use the *python* (=./print_icons.py=) 
 
   Once done, you can run:
 
-  #+begin_src shell
+#+begin_src sh
 ./build.sh
   #+end_src
 
@@ -157,49 +158,50 @@ ed9w2in6 [2023-10-31 Tue]: Alternatively, use the *python* (=./print_icons.py=) 
    To use =icons-in-terminal= with fish, add this line to
    =~/.config/fish/config.fish=:
 
-   #+begin_src shell
+ #+begin_src sh
 source ~/.local/share/icons-in-terminal/icons.fish
    #+end_src
 
    Restart a terminal, now you can print any icons with its name:
 
-   #+begin_src shell
+ #+begin_src sh
 echo $oct_location
    #+end_src
 
 ** Bash integration
+   ed9w2in6: requries bash version >= 4.2, ref: https://lists.gnu.org/archive/html/info-gnu/2011-02/msg00012.html#:%7E:text=UXXXXXXXX%20escape%20sequences
    Add this line to your .bashrc:
 
-   #+begin_src shell
+ #+begin_src sh
 source ~/.local/share/icons-in-terminal/icons_bash.sh
    #+end_src
 
    Restart a terminal, now you can print any icons with its name:
 
-   #+begin_src shell
+ #+begin_src sh
 echo -e $oct_location # note the '-e'
       #+end_src
 
 ** Emacs integration
    ed9w2in6:
-   Please refer to 2023_SETUP.org for latest setup instructions.
-   I recommend https://github.com/seagle0128/icons-in-terminal.el for proper integration.
+   Please refer to file:HOW_TO_SETUP_2023.org for latest working setup instructions for Emacs.
+   If you had to use =icons-in-terminal= then I recommend https://github.com/seagle0128/icons-in-terminal.el instead for proper integration.
 
-   Original content:
-      #+begin_example
+   Content from original repo below (outdated):
+   
    Add this line to your emacs init file:
 
-   ,#+begin_example
+  #+begin_src emacs-lisp :results output scalar :eval no
   (add-to-list 'load-path "~/.local/share/icons-in-terminal/")
-   ,#+end_example
+  #+end_src
 
    To use icons-in-terminal in your package:
 
-   ,#+begin_example
+  #+begin_src emacs-lisp :results output scalar :eval no
   (require 'icons-in-terminal)
   (insert (icons-in-terminal 'oct_flame)) ; C-h f icons-in-terminal[RET] for more info
-   ,#+end_example
-      #+end_example
+  #+end_src
+
 
 * Projects using icons-in-terminal
 ** ls

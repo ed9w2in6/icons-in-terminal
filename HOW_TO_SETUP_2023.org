@@ -10,9 +10,10 @@ Last update at: [2023-01-26 Thu 15:36]
   Follow the instruction to comment out all lines under the fontconfig tag except the chosen font.
    
   Add a line like this if it doesn't exist yet:
-       #+begin_quote xml
+
+#+begin_src xml :results output scalar :eval no
 <alias><family>JetBrainsMono Nerd Font</family><prefer><family>icons-in-terminal</family></prefer></alias>
-       #+end_quote
+#+end_src
    
 As of [2023-01-26 Thu] mine's is =JetBrainsMono Nerd Font=.
    
@@ -21,51 +22,55 @@ As of [2023-01-26 Thu] mine's is =JetBrainsMono Nerd Font=.
   on an OS that uses fontconfig properly e.g. macOS.
   
   Kitty needs unicode range map as follows:
-       #+begin_quote
+         #+begin_quote
 symbol_map U+E000-U+EEA0 icons-in-terminal
-       #+end_quote
+         #+end_quote
 
 In which =icons-in-terminal= is the PostScript name.
 If this project changed its postscript name you will have to adjust it accordingly.
-One can obtain the postscript name by =fc-list -b "font name"=.
+One can obtain the postscript name by:
+
+#+begin_src sh :results output scalar :eval no
+fc-list -b "font name"
+#+end_src
   
 * font config
   Better rebuild font config cache after install:
-       #+begin_src shell-script
+         #+begin_src sh
 fc-cache -f -v
-       #+end_src
+         #+end_src
 
 * MacOS
   MacOS might have overridden some unix system calls that checks font list.
   One will need to install the patched font again with Apple's /Font Book/
   in order for applications like =kitty= to pick it up.
 
-  #+begin_src sh :results vector
+    #+begin_src sh :results vector
 echo
 echo count type value comment
 echo
 fc-list -v | grep icons-in-terminal | sort -V | uniq -c | sed 's/"/'\''/g' | sed -E 's/^ +//' | sed -E 's/[^a-zA-Z0-9./:()-]+/|/g' | sort
 echo
-  #+end_src
+    #+end_src
 
-  #+RESULTS:
-  |-------+-----------------+-----------------------------------------------+---------|
-  | count | type            | value                                         | comment |
-  |-------+-----------------+-----------------------------------------------+---------|
-  |     1 | family:         | icons-in-terminal                             | (s)     |
-  |     1 | file:           | =${HOME}/.fonts/icons-in-terminal.ttf=          | (s)     |
-  |     1 | fullname:       | icons-in-terminal                             | (s)     |
-  |     1 | postscriptname: | icons-in-terminal                             | (s)     |
-  |-------+-----------------+-----------------------------------------------+---------|
+#+RESULTS:
+|-------+-----------------+-----------------------------------------------+---------|
+| count | type            | value                                         | comment |
+|-------+-----------------+-----------------------------------------------+---------|
+|     1 | family:         | icons-in-terminal                             | (s)     |
+|     1 | file:           | =${HOME}/.fonts/icons-in-terminal.ttf=          | (s)     |
+|     1 | fullname:       | icons-in-terminal                             | (s)     |
+|     1 | postscriptname: | icons-in-terminal                             | (s)     |
+|-------+-----------------+-----------------------------------------------+---------|
 
-  open the =ttf= file to install.
+open the =ttf= file to install.
 
   #+begin_src sh
 # try xdg-open for linux if you have it
 open ${HOME}/.fonts/icons-in-terminal.ttf
   #+end_src
 
-  #+RESULTS:
+#+RESULTS:
 
 * Emacs (=icons-in-terminal.el=)
   I used =icons-in-terminal.el=, see: https://github.com/seagle0128/icons-in-terminal.el
@@ -83,53 +88,51 @@ open ${HOME}/.fonts/icons-in-terminal.ttf
    by aliasing alls to functions to those in =icons-in-terminal=.
     
    As such:
-   #+begin_quote emacs-lisp
-   (add-to-list 'load-path "~/.emacs.d/all-the-icons.el-4.0.1/")
-   (require 'all-the-icons)
-   (with-eval-after-load 'all-the-icons
-   (defalias #'all-the-icons-insert #'icons-in-terminal-insert)
-   (defalias #'all-the-icons-insert-faicon #'icons-in-terminal-insert-faicon)
-   (defalias #'all-the-icons-insert-fileicon #'icons-in-terminal-insert-fileicon)
-   (defalias #'all-the-icons-insert-material #'icons-in-terminal-insert-material)
-   (defalias #'all-the-icons-insert-octicon #'icons-in-terminal-insert-octicon)
-   (defalias #'all-the-icons-insert-wicon #'icons-in-terminal-insert-wicon)
-   (defalias #'all-the-icons-insert-devicon #'icons-in-terminal-insert)
-   (defalias #'all-the-icons-insert-alltheicon #'icons-in-terminal-insert)
+      #+begin_src emacs-lisp :results output scalar :eval no
+(add-to-list 'load-path "~/.emacs.d/all-the-icons.el-4.0.1/")
+(require 'all-the-icons)
+(defalias #'all-the-icons-insert #'icons-in-terminal-insert)
+(defalias #'all-the-icons-insert-faicon #'icons-in-terminal-insert-faicon)
+(defalias #'all-the-icons-insert-fileicon #'icons-in-terminal-insert-fileicon)
+(defalias #'all-the-icons-insert-material #'icons-in-terminal-insert-material)
+(defalias #'all-the-icons-insert-octicon #'icons-in-terminal-insert-octicon)
+(defalias #'all-the-icons-insert-wicon #'icons-in-terminal-insert-wicon)
+(defalias #'all-the-icons-insert-devicon #'icons-in-terminal-insert)
+(defalias #'all-the-icons-insert-alltheicon #'icons-in-terminal-insert)
 
-   (defalias #'all-the-icons-icon-for-dir #'icons-in-terminal-icon-for-dir)
-   (defalias #'all-the-icons-icon-for-file #'icons-in-terminal-icon-for-file)
-   (defalias #'all-the-icons-icon-for-mode #'icons-in-terminal-icon-for-mode)
-   (defalias #'all-the-icons-icon-for-url #'icons-in-terminal-icon-for-url)
-    
-   (defalias #'all-the-icons-icon-family #'icons-in-terminal-icon-family)
-   (defalias #'all-the-icons-icon-family-for-buffer #'icons-in-terminal-icon-family-for-buffer)
-   (defalias #'all-the-icons-icon-family-for-file #'icons-in-terminal-icon-family-for-file)
-   (defalias #'all-the-icons-icon-family-for-mode #'icons-in-terminal-icon-family-for-mode)
-   (defalias #'all-the-icons-icon-for-buffer #'icons-in-terminal-icon-for-buffer)
-    
-   (defalias #'all-the-icons-faicon #'icons-in-terminal-faicon)
-   (defalias #'all-the-icons-octicon #'icons-in-terminal-octicon)
-   (defalias #'all-the-icons-fileicon #'icons-in-terminal-fileicon)
-   (defalias #'all-the-icons-material #'icons-in-terminal-material)
-   (defalias #'all-the-icons-wicon #'icons-in-terminal-wicon)
-   ;; (defalias #'all-the-icons-devicon #'icons-in-terminal-fileicon)
-   ;; (defalias #'all-the-icons-alltheicon #'icons-in-terminal-fileicon)
+(defalias #'all-the-icons-icon-for-dir #'icons-in-terminal-icon-for-dir)
+(defalias #'all-the-icons-icon-for-file #'icons-in-terminal-icon-for-file)
+(defalias #'all-the-icons-icon-for-mode #'icons-in-terminal-icon-for-mode)
+(defalias #'all-the-icons-icon-for-url #'icons-in-terminal-icon-for-url)
 
-   (defalias 'all-the-icons-default-adjust 'icons-in-terminal-default-adjust)
-   (defalias 'all-the-icons-color-icons 'icons-in-terminal-color-icons)
-   (defalias 'all-the-icons-scale-factor 'icons-in-terminal-scale-factor)
-   (defalias 'all-the-icons-icon-alist 'icons-in-terminal-icon-alist)
-   (defalias 'all-the-icons-dir-icon-alist 'icons-in-terminal-dir-icon-alist)
-   (defalias 'all-the-icons-weather-icon-alist 'icons-in-terminal-weather-icon-alist)
-   )
-     
-   ;; Edit config at ~/.config/fontconfig/conf.d/30-icons.conf
-   (add-to-list 'load-path "~/.emacs.d/icons-in-terminal.el/")
-   (require 'icons-in-terminal)
-   (with-eval-after-load 'treemacs
-   (require 'treemacs-all-the-icons)
-   (treemacs-load-theme "all-the-icons"))
-         #+end_quote
+(defalias #'all-the-icons-icon-family #'icons-in-terminal-icon-family)
+(defalias #'all-the-icons-icon-family-for-buffer #'icons-in-terminal-icon-family-for-buffer)
+(defalias #'all-the-icons-icon-family-for-file #'icons-in-terminal-icon-family-for-file)
+(defalias #'all-the-icons-icon-family-for-mode #'icons-in-terminal-icon-family-for-mode)
+(defalias #'all-the-icons-icon-for-buffer #'icons-in-terminal-icon-for-buffer)
+
+(defalias #'all-the-icons-faicon #'icons-in-terminal-faicon)
+(defalias #'all-the-icons-octicon #'icons-in-terminal-octicon)
+(defalias #'all-the-icons-fileicon #'icons-in-terminal-fileicon)
+(defalias #'all-the-icons-material #'icons-in-terminal-material)
+(defalias #'all-the-icons-wicon #'icons-in-terminal-wicon)
+;; (defalias #'all-the-icons-devicon #'icons-in-terminal-fileicon)
+;; (defalias #'all-the-icons-alltheicon #'icons-in-terminal-fileicon)
+
+(defalias 'all-the-icons-default-adjust 'icons-in-terminal-default-adjust)
+(defalias 'all-the-icons-color-icons 'icons-in-terminal-color-icons)
+(defalias 'all-the-icons-scale-factor 'icons-in-terminal-scale-factor)
+(defalias 'all-the-icons-icon-alist 'icons-in-terminal-icon-alist)
+(defalias 'all-the-icons-dir-icon-alist 'icons-in-terminal-dir-icon-alist)
+(defalias 'all-the-icons-weather-icon-alist 'icons-in-terminal-weather-icon-alist)
+
+;; Edit config at ~/.config/fontconfig/conf.d/30-icons.conf
+(add-to-list 'load-path "~/.emacs.d/icons-in-terminal.el/")
+(require 'icons-in-terminal)
+(with-eval-after-load 'treemacs
+  (require 'treemacs-all-the-icons)
+  (treemacs-load-theme "all-the-icons"))
+      #+end_src
  
 ** Patching packages
 *** treemacs-all-the-icons
